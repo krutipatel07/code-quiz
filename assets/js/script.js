@@ -10,6 +10,38 @@ var responsDiv = document.querySelector("#response");
 var submitButton = document.querySelector("#submit");
 var errMsg = document.querySelector("#errorMessage");
 var finalscoreList = document.querySelector("#allHighScore");
+// var currentQuention = 0;
+var myTime = 75;
+var myInterval;
+
+/** Create an  array of questions*/
+var questions = [
+    {
+        title: "Commonly used data types DO Not Include:",
+        choices: ["strings", "booleans", "alerts", "numbers"],
+        answer: "alerts",
+    },
+    {
+        title: "The condition in an if / else statement is enclosed with ____.",
+        choices: ["quotes", "curly brackets", "parenthesis", "square brackets"],
+        answer: "parenthesis",
+    },
+    {
+        title: "Arrays in JavaScript can be used to store _______.",
+        choices: ["numbers and strings", "other arrays", "booleans", "all of the above"],
+        answer: "all of the above",
+    },
+    {
+        title: "String values must be enclosed within when being assigned to variables.",
+        choices: ["commas", "curly brackets", "quotes", "parenthesis"],
+        answer: "quotes",
+    },    
+    {
+        title: "A very useful tool used during development and debugging for printing content to the debugger is:",
+        choices: ["JavaScript", "terminal/bash", "for loops", "console.log"],
+        answer: "console.log",
+    }
+]
 
 /**  Here is the event listener to start the timer and hide the quiz button*/
 startButton.addEventListener('click', function(event){
@@ -34,7 +66,13 @@ function setTimer(){
         timeResult.textContent = "Time:"+" "+ myTime;
         // var timeReset = timeResult.textContent = "Time:"+" "+ myTime;
     },1000);
+
 }
+
+/**declare the index variable for the onclickHandler and displayQuestions function**/
+var i = 0;
+
+ /**Create next questions to be added to the HTML document dynamically*/
 function displayQuestions(){
     var myTitle = questions[i].title;
     titleElement.textContent = myTitle;
@@ -85,46 +123,9 @@ function displayQuestions(){
     allQuestionBtn.forEach(function(event){
         event.addEventListener("click", onclickHandler)
     });
-    function onclickHandler(event){
-
-    if(myTime <= 0){
-        clearInterval(myInterval);
-        quizContainer.style.display = "none";
-        displayResult();
-    }
-
-    var answerText = event.target.textContent;
-    if(answerText === questions[i].answer){
-        myTime = myTime;
-        responsDiv.setAttribute("style", "color: green; border-top: 2px solid gray; font-style: italic")
-        responsDiv.textContent = "Correct!";
-    } else{
-        responsDiv.setAttribute("style", "color: red; border-top: 2px solid gray; font-style: italic")
-        responsDiv.textContent = "Wrong!";
-        myTime = myTime - 10;
-    }
-
-    if(i < questions.length-1){
-        i++;
-
-        setTimeout(function(){
-            displayQuestions();
-
-            responsDiv.textContent = "";
-        },1000)
-    }else {
-        setTimeout(function () {
-
-            responsDiv.textContent = "";
-            displayResult();
-            clearInterval(myInterval);         
-        }, 500)
-
-        quizContainer.innerHTML = '';
-    }
-}
 }
 
+/**Add a function to compare the answers and display each questions as the buttons are clicked.*/
 function onclickHandler(event){
 
     if(myTime <= 0){
@@ -132,6 +133,7 @@ function onclickHandler(event){
         quizContainer.style.display = "none";
         displayResult();
     }
+
     var answerText = event.target.textContent;
     if(answerText === questions[i].answer){
         myTime = myTime;
@@ -142,6 +144,7 @@ function onclickHandler(event){
         responsDiv.textContent = "Wrong!";
         myTime = myTime - 10;
     }
+
     if(i < questions.length-1){
         i++;
 
@@ -161,6 +164,7 @@ function onclickHandler(event){
         quizContainer.innerHTML = '';
     }
 }
+
 /**Function to display users final score */    
 function displayResult(){
     responsDiv.setAttribute("style", "border-top: none")
@@ -171,6 +175,10 @@ function displayResult(){
     finalScore.textContent = "Your finale score is " + highScores + ".";
     // localStorage.setItem("HighScores", highScores)
 } 
+
+  
+
+/** This event listner submit the initial and final score to the local storage */
 
 submitButton.addEventListener("click", function (event) {
     console.log("click submit");
@@ -210,6 +218,16 @@ function renderLastItem() {
         preScore.textContent =i + 1 + ". " + storeHighScore[i].initial + " - " + storeHighScore[i].score;
         finalscoreList.appendChild(preScore);
     }
+    // var yourScore = localStorage.getItem("HighScores");
+    // var yourInitial = localStorage.getItem("Initial");
+    // if (yourScore && yourInitial === "") {
+    //     return
+    // }
+    // finishSection.textContent = "";
+    // var finalPage = document.querySelector(".finalPage");
+    // finalPage.style.visibility = "visible";
+    // var initialAndScore = document.querySelector("#staticName");
+    // initialAndScore.value = yourInitial + ":" + " " + yourScore;
 }
 
 /**This function will refresh the page and send user back to begining page when go back button is clicked */
@@ -222,3 +240,11 @@ function clearScore() {
     finalscoreList.innerHTML = "";
     localStorage.clear("storeHighScore");
 }
+
+// -----extra----
+    // console.log('click the btn');
+    // console.log(currentQuention);
+    // console.log(Questions[currentQuention].title);
+    // currentQuention++;
+
+    // finishSection.style.display = "block";
