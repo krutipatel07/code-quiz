@@ -87,7 +87,7 @@ function displayQuestions(){
     titleList1.setAttribute("class", "questionList");
     var btn1 = document.createElement("button");
     btn1.setAttribute("class", "questionBtn");
-    btn1.textContent = "1. " + myChoice1;
+    btn1.textContent = myChoice1;
     titleList1.appendChild(btn1);
     optionList.appendChild(titleList1);
     quizContainer.appendChild(optionList);
@@ -96,7 +96,7 @@ function displayQuestions(){
     titleList2.setAttribute("class", "questionList");
     var btn2 = document.createElement("button");
     btn2.setAttribute("class", "questionBtn");
-    btn2.textContent = "2. " + myChoice2;
+    btn2.textContent = myChoice2;
     titleList2.appendChild(btn2);
     optionList.appendChild(titleList2);
     quizContainer.appendChild(optionList);
@@ -105,7 +105,7 @@ function displayQuestions(){
     titleList3.setAttribute("class", "questionList");
     var btn3 = document.createElement("button");
     btn3.setAttribute("class", "questionBtn");
-    btn3.textContent = "3. " + myChoice3;
+    btn3.textContent = myChoice3;
     titleList3.appendChild(btn3);
     optionList.appendChild(titleList3);
     quizContainer.appendChild(optionList);
@@ -114,7 +114,7 @@ function displayQuestions(){
     titleList4.setAttribute("class", "questionList");
     var btn4 = document.createElement("button");
     btn4.setAttribute("class", "questionBtn");
-    btn4.textContent = "4. " + myChoice4;
+    btn4.textContent = myChoice4;
     titleList4.appendChild(btn4);
     optionList.appendChild(titleList4);
     quizContainer.appendChild(optionList);
