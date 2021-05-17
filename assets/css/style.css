@@ -42,7 +42,7 @@ main{
     font-size: 30px;
     font-weight: 700;
 }
-.finalPage ol{
+.quizContainer ol, .finalPage ol{
     padding-left: 0;
     list-style: none;
 }
