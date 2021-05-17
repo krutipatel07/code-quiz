@@ -161,3 +161,13 @@ function onclickHandler(event){
         quizContainer.innerHTML = '';
     }
 }
+/**Function to display users final score */    
+function displayResult(){
+    responsDiv.setAttribute("style", "border-top: none")
+    finishSection.style.visibility = "visible";
+    timeResult.textContent = "Time:" + " " + myTime;
+    var highScores = myTime;
+    // localStorage.getItem(highScores)
+    finalScore.textContent = "Your finale score is " + highScores + ".";
+    // localStorage.setItem("HighScores", highScores)
+} 
