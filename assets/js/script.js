@@ -11,7 +11,7 @@ var submitButton = document.querySelector("#submit");
 var errMsg = document.querySelector("#errorMessage");
 var finalscoreList = document.querySelector("#allHighScore");
 // var currentQuention = 0;
-var myTime = 75;
+var myTime = 5;
 var myInterval;
 
 /** Create an  array of questions*/
@@ -62,6 +62,8 @@ function setTimer(){
             console.log(myTime);
             clearInterval(myInterval);
             alert('Your time is out.')
+            quizContainer.style.display = "none";
+            displayResult();
         }
         timeResult.textContent = "Time:"+" "+ myTime;
         // var timeReset = timeResult.textContent = "Time:"+" "+ myTime;
