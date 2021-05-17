@@ -10,7 +10,7 @@ var responsDiv = document.querySelector("#response");
 var submitButton = document.querySelector("#submit");
 var errMsg = document.querySelector("#errorMessage");
 var finalscoreList = document.querySelector("#allHighScore");
-// var currentQuention = 0;
+var highScore = document.querySelector("#h-score");
 var myTime = 76;
 var myInterval;
 
@@ -243,10 +243,10 @@ function clearScore() {
     localStorage.clear("storeHighScore");
 }
 
-// -----extra----
-    // console.log('click the btn');
-    // console.log(currentQuention);
-    // console.log(Questions[currentQuention].title);
-    // currentQuention++;
-
-    // finishSection.style.display = "block";
+/** This event listner display the highscore when click the button in the header */
+highScore.addEventListener("click", function(){
+    finalscoreList.innerHTML = "";
+    wrapperSection.innerHTML = "";
+    quizContainer.innerHTML = "";
+    renderLastItem();
+});
