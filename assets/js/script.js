@@ -85,4 +85,81 @@ function displayQuestions(){
     allQuestionBtn.forEach(function(event){
         event.addEventListener("click", onclickHandler)
     });
+    function onclickHandler(event){
+
+    if(myTime <= 0){
+        clearInterval(myInterval);
+        quizContainer.style.display = "none";
+        displayResult();
+    }
+
+    var answerText = event.target.textContent;
+    if(answerText === questions[i].answer){
+        myTime = myTime;
+        responsDiv.setAttribute("style", "color: green; border-top: 2px solid gray; font-style: italic")
+        responsDiv.textContent = "Correct!";
+    } else{
+        responsDiv.setAttribute("style", "color: red; border-top: 2px solid gray; font-style: italic")
+        responsDiv.textContent = "Wrong!";
+        myTime = myTime - 10;
+    }
+
+    if(i < questions.length-1){
+        i++;
+
+        setTimeout(function(){
+            displayQuestions();
+
+            responsDiv.textContent = "";
+        },1000)
+    }else {
+        setTimeout(function () {
+
+            responsDiv.textContent = "";
+            displayResult();
+            clearInterval(myInterval);         
+        }, 500)
+
+        quizContainer.innerHTML = '';
+    }
+}
+}
+
+function onclickHandler(event){
+
+    if(myTime <= 0){
+        clearInterval(myInterval);
+        quizContainer.style.display = "none";
+        displayResult();
+    }
+
+    var answerText = event.target.textContent;
+    if(answerText === questions[i].answer){
+        myTime = myTime;
+        responsDiv.setAttribute("style", "color: green; border-top: 2px solid gray; font-style: italic")
+        responsDiv.textContent = "Correct!";
+    } else{
+        responsDiv.setAttribute("style", "color: red; border-top: 2px solid gray; font-style: italic")
+        responsDiv.textContent = "Wrong!";
+        myTime = myTime - 10;
+    }
+
+    if(i < questions.length-1){
+        i++;
+
+        setTimeout(function(){
+            displayQuestions();
+
+            responsDiv.textContent = "";
+        },1000)
+    }else {
+        setTimeout(function () {
+
+            responsDiv.textContent = "";
+            displayResult();
+            clearInterval(myInterval);         
+        }, 500)
+
+        quizContainer.innerHTML = '';
+    }
 }
