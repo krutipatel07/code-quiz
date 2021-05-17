@@ -11,7 +11,7 @@ var submitButton = document.querySelector("#submit");
 var errMsg = document.querySelector("#errorMessage");
 var finalscoreList = document.querySelector("#allHighScore");
 // var currentQuention = 0;
-var myTime = 5;
+var myTime = 76;
 var myInterval;
 
 /** Create an  array of questions*/
