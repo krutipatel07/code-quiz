@@ -132,7 +132,6 @@ function onclickHandler(event){
         quizContainer.style.display = "none";
         displayResult();
     }
-
     var answerText = event.target.textContent;
     if(answerText === questions[i].answer){
         myTime = myTime;
@@ -143,7 +142,6 @@ function onclickHandler(event){
         responsDiv.textContent = "Wrong!";
         myTime = myTime - 10;
     }
-
     if(i < questions.length-1){
         i++;
 
