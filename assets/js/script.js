@@ -171,3 +171,54 @@ function displayResult(){
     finalScore.textContent = "Your finale score is " + highScores + ".";
     // localStorage.setItem("HighScores", highScores)
 } 
+
+submitButton.addEventListener("click", function (event) {
+    console.log("click submit");
+    event.preventDefault();
+    var initialInput = document.querySelector("#inputInitial").value;
+    if (initialInput === "") {
+        errMsg.setAttribute("style", "color: red")
+        errMsg.textContent = "Initial input field cannot be empty"
+    } else {
+        errMsg.textContent = "";
+
+        var storeHighScore = JSON.parse(localStorage.getItem("storeHighScore")) || [] ;
+        var currentUser = {
+            score: myTime,
+            initial: initialInput
+        }
+        storeHighScore.push(currentUser);
+        localStorage.setItem("storeHighScore", JSON.stringify(storeHighScore));
+
+        // localStorage.getItem(initialInput)
+        // localStorage.setItem("Initial", initialInput)
+        renderLastItem();
+    }
+})
+
+/**function to show the last page  */
+function renderLastItem() {
+    finishSection.textContent = "";
+    var finalPage = document.querySelector(".finalPage");
+    finalPage.style.visibility = "visible";
+
+    var storeHighScore = JSON.parse(localStorage.getItem("storeHighScore")) || [] ;
+    console.log(storeHighScore);
+    for(i =0; i< storeHighScore.length; i++){
+        console.log(storeHighScore[i]);
+        var preScore = document.createElement("li");
+        preScore.textContent =i + 1 + ". " + storeHighScore[i].initial + " - " + storeHighScore[i].score;
+        finalscoreList.appendChild(preScore);
+    }
+}
+
+/**This function will refresh the page and send user back to begining page when go back button is clicked */
+function init() {
+    location.reload();  
+}
+
+/**This function will  clear initial and score displayed on the final page */
+function clearScore() {
+    finalscoreList.innerHTML = "";
+    localStorage.clear("storeHighScore");
+}
